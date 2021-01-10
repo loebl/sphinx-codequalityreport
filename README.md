@@ -10,3 +10,11 @@ When using the sphinx-quickstart generated Makefile, call make with `make O="-w 
 
 Process the warnings: `./sphinx-report.py warn.log | sed -e "s%$(git rev-parse --show-toplevel)\/%%" > codequality.json`.
 The short sed script removes the base path to get correct paths in gitlab.
+
+The report has to be given as artifact in gitlab CI:
+```
+pages:
+  artifacts:
+    reports:
+      codequality: codequality.json
+```
